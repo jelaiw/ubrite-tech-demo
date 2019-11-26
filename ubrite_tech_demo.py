@@ -15,7 +15,13 @@ def load_clinical_data():
 @st.cache
 def load_deg_results():
 	# See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_table.html.
-	return pd.read_table('JX12T_sig_DE_Results.txt')
+	df = pd.read_table('JX12T_sig_DE_Results.txt')
+	# Add sample name field to clarify that these data belong to sample JX12T, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146.
+	df['Sample Name'] = 'JX12T'
+	# Reorder columns so that sample name field is first.
+	# See https://stackoverflow.com/questions/13148429/how-to-change-the-order-of-dataframe-columns.
+	df = df[['Sample Name', 'Unnamed: 0', 'baseMean', 'log2FoldChange', 'lfcSE', 'stat', 'pvalue', 'padj', 'symbol', 'ensembl', 'external_gene', 'gene_biotype', 'description', 'chromosome_name', 'start_position', 'end_position', 'strand']]
+	return df
 
 # Call PAGER REST API to perform hypergeometric test and return enriched PAGs associated with given list of genes as a data frame.
 # See pathFun() in PAGER R SDK at https://uab.app.box.com/file/529139337869.
