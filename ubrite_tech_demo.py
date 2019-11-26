@@ -75,5 +75,12 @@ sources = st.multiselect('Available Data Sources',
 fdr = st.slider('FDR Cutoff', 0.0, 1.0, 0.05, 0.01)
 pager_output = run_pager(genes, sources, fdr)
 
-st.subheader('View Results')
-st.write(pager_output)
+st.subheader('View/Filter Results')
+# Convert GS_SIZE column from object to integer dtype.
+# See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html.
+pager_output = pager_output.astype({'GS_SIZE': 'int32'})
+gs_sizes = pager_output['GS_SIZE'].tolist()
+min_gs_size = st.number_input('Min GS_SIZE', value=min(gs_sizes))
+max_gs_size = st.number_input('Max GS_SIZE', value=max(gs_sizes))
+filtered_output = pager_output[pager_output['GS_SIZE'].between(min_gs_size, max_gs_size)]
+st.write(filtered_output)
