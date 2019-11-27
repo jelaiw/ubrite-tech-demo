@@ -80,7 +80,11 @@ st.subheader('View/Filter Results')
 # See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html.
 pager_output = pager_output.astype({'GS_SIZE': 'int32'})
 gs_sizes = pager_output['GS_SIZE'].tolist()
-min_gs_size = st.number_input('Min GS_SIZE', value=min(gs_sizes))
-max_gs_size = st.number_input('Max GS_SIZE', value=max(gs_sizes))
-filtered_output = pager_output[pager_output['GS_SIZE'].between(min_gs_size, max_gs_size)]
+# Figure out the min and max GS_SIZE within the PAGER output.
+min_gs_size = min(gs_sizes)
+max_gs_size = max(gs_sizes)
+# Set up a range slider. Cool!
+# See https://streamlit.io/docs/api.html#streamlit.slider.
+user_min, user_max = st.slider('GS_SIZE Range', max_value=max_gs_size, value=(min_gs_size, max_gs_size))
+filtered_output = pager_output[pager_output['GS_SIZE'].between(user_min, user_max)]
 st.write(filtered_output)
