@@ -67,12 +67,12 @@ genes = [x for x in deg_results['symbol'].tolist() if str(x) != 'nan']
 st.header('Run PAGER Analysis')
 st.markdown("The list of significantly differentially expressed genes is then passed to PAGER, which offers a network-accessible REST API for performing various gene-set, network, and pathway analyses.")
 
-st.subheader('Adjust Parameters')
-sources = st.multiselect('Available Data Sources',
+st.sidebar.subheader('Adjust PAGER Parameters')
+sources = st.sidebar.multiselect('Available Data Sources',
 	('KEGG', 'WikiPathway', 'BioCarta', 'MSigDB', 'Reactome', 'Spike'),
 	('KEGG', 'WikiPathway')
 )
-fdr = st.slider('FDR Cutoff', 0.0, 1.0, 0.05, 0.01)
+fdr = st.sidebar.slider('FDR Cutoff', 0.0, 1.0, 0.05, 0.01)
 pager_output = run_pager(genes, sources, fdr)
 
 st.subheader('View/Filter Results')
