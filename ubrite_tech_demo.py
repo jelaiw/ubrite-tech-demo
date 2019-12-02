@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import requests
 
 st.title('U-BRITE Tech Demo')
@@ -9,6 +10,11 @@ st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick De
 def load_clinical_data():
 	# Note these data are results from a UWS API query performed by Abakash for GBM cohort demographic data. See Nov 19, 2019 e-mail for further detail.
 	df = pd.read_csv('getalli2b2demographics-rdalej-27676.csv')
+	# Mask PHI variables. Double-check with Matt.
+	df['Patient Id'] = np.arange(27)
+	df['Birth Date'] = 'masked'
+	df['Death Date'] = 'masked'
+	df['Zip Code'] = 'masked'
 	# Remove age field due to possible confusion created by -1 values, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_18590 for further detail and context.
 	return df.drop(columns=['Age(in years)'])
 
