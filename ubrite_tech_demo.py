@@ -10,11 +10,6 @@ st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick De
 def load_clinical_data():
 	# Note these data are results from a UWS API query performed by Abakash for GBM cohort demographic data. See Nov 19, 2019 e-mail for further detail.
 	df = pd.read_csv('getalli2b2demographics-rdalej-27676.csv')
-	# Mask PHI variables. Double-check with Matt.
-	df['Patient Id'] = np.arange(27)
-	df['Birth Date'] = 'masked'
-	df['Death Date'] = 'masked'
-	df['Zip Code'] = 'masked'
 	# Remove age field due to possible confusion created by -1 values, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_18590 for further detail and context.
 	return df.drop(columns=['Age(in years)'])
 
@@ -53,11 +48,11 @@ def run_pager(genes, sources, fdr):
 	return pd.DataFrame(response.json())
 
 st.header('Query Clinical Data')
-st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically from a secure call the *Unified Web Services* (UWS) API at http://ubritedvapp1.hs.uab.edu:8080/UbriteServices/getalli2b2demographics?requestorid=rdalej&cohortid=27676&format=csv.")
+st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically and securely over the network via REST API call to the *Unified Web Services* (UWS) API at http://ubritedvapp1.hs.uab.edu:8080/UbriteServices/getalli2b2demographics?requestorid=rdalej&cohortid=27676&format=csv, which returns de-identified results.")
 
-clinical_data_load_state = st.text('Loading data ... ')
+clinical_data_load_state = st.text('Loading query results ... ')
 clinical_data = load_clinical_data()
-clinical_data_load_state.text('Loading data ... done!')
+clinical_data_load_state.text('Loading query results ... done!')
 st.write(clinical_data)
 
 st.header('Parse DEG Results')
