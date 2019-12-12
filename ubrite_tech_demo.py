@@ -17,7 +17,8 @@ def load_clinical_data():
 @st.cache
 def load_deg_results():
 	# See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_table.html.
-	df = pd.read_table('JX12T_sig_DE_Results.txt')
+	# See https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_19095.
+	df = pd.read_csv('JX12T_sig_DE_Results.txt', sep='\t')
 	# Add sample name field to clarify that these data belong to sample JX12T, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146.
 	df['Sample Name'] = 'JX12T'
 	# Reorder columns so that sample name field is first.
