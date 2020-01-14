@@ -99,5 +99,5 @@ st.markdown('Note this is an unofficial file download workaround from the Awesom
 # See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html.
 csv = filtered_output.to_csv(index=False)
 b64 = base64.b64encode(csv.encode()).decode()
-href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'
+href = '<a href="data:file/csv;base64,{0}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'.format(b64)
 st.markdown(href, unsafe_allow_html=True)
