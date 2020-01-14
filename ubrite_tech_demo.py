@@ -92,7 +92,10 @@ user_min, user_max = st.slider('GS_SIZE Range', max_value=max_gs_size, value=(mi
 filtered_output = pager_output[pager_output['GS_SIZE'].between(user_min, user_max)]
 st.write(filtered_output)
 
+# See "File Download Workaround" in Gallery at http://awesome-streamlit.org/ for background reading.
 st.subheader('Download Results')
+st.markdown('The filtered PAGER results can be now be downloaded for further review and post-processing.')
+st.markdown('Note this is an unofficial file download workaround from the Awesome Streamlit Gallery at http://awesome-streamlit.org, implemented here to share a neat idea.')
 # See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html.
 csv = filtered_output.to_csv(index=False)
 b64 = base64.b64encode(csv.encode()).decode()
