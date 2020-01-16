@@ -3,14 +3,26 @@ import pandas as pd
 import numpy as np
 import requests
 import base64
+from io import StringIO
 
 st.title('U-BRITE Tech Demo')
 st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, Christian Stackhouse, Lara Ianov, Chris Willey, Jake Chen*')
 
-# Return GBM PDX clinical data as a data frame.
-def load_clinical_data():
-	# Note these data are results from a UWS API query performed by Abakash for GBM cohort demographic data. See Nov 19, 2019 e-mail for further detail.
-	df = pd.read_csv('getalli2b2demographics-rdalej-27676.csv')
+# Return GBM PDX cohort demographic data as a data frame.
+def load_demographic_data():
+	# Set up request parameters for UWS API call, see https://ubrite.slack.com/files/UAVTLGHT7/FLDADUC72/unified_ws_client.py for example from Abakash.
+	params = {}
+	params['requestorid'] = "rdalej"
+	params['cohortid'] = "27676"
+	params['format'] = "csv"
+	response = requests.get('https://ubritedvapp1.hs.uab.edu/UbriteServices/getalli2b2demographics', headers={'eppn': 'jelaiw@uab.edu'}, params=params)
+
+	# Remove first two lines of CSV-formatted response, see https://ubrite.slack.com/archives/CJTQDGE30/p1579191182004100 for context.
+	lines = response.text.split('\n')
+	relevant_csv_text = '\n'.join(lines[2:])
+	# See https://stackoverflow.com/questions/20696479/pandas-read-csv-from-string-or-package-data.
+	df = pd.read_csv(StringIO(relevant_csv_text))
+
 	# Remove age field due to possible confusion created by -1 values, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_18590 for further detail and context.
 	return df.drop(columns=['Age(in years)'])
 
@@ -53,7 +65,7 @@ st.header('Query Clinical Data')
 st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically and securely over the network via REST API call to the *Unified Web Services* (UWS) API at http://ubritedvapp1.hs.uab.edu:8080/UbriteServices/getalli2b2demographics?requestorid=rdalej&cohortid=27676&format=csv, which returns de-identified results.")
 
 clinical_data_load_state = st.text('Loading query results ... ')
-clinical_data = load_clinical_data()
+clinical_data = load_demographic_data()
 clinical_data_load_state.text('Loading query results ... done!')
 st.write(clinical_data)
 
