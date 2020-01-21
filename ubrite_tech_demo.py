@@ -62,7 +62,8 @@ def run_pager(genes, sources, fdr):
 	return pd.DataFrame(response.json())
 
 st.header('Query Clinical Data')
-st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically and securely over the network via REST API call to the *Unified Web Services* (UWS) API at http://ubritedvapp1.hs.uab.edu:8080/UbriteServices/getalli2b2demographics?requestorid=rdalej&cohortid=27676&format=csv, which returns de-identified results.")
+st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically and securely over the network via REST API call to the *Unified Web Services* (UWS) API, which returns cohort-related clinical data sets.")
+st.markdown("See https://ubritedvapp1.hs.uab.edu/UbriteServices/services.html for API specification.")
 
 clinical_data_load_state = st.text('Loading query results ... ')
 clinical_data = load_demographic_data()
