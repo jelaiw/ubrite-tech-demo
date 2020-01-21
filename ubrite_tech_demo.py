@@ -95,7 +95,7 @@ if st.checkbox('Show DEG results table', value=True):
 genes = [x for x in deg_results['symbol'].tolist() if str(x) != 'nan']
 
 st.header('Run PAGER Analysis')
-st.markdown("The list of significantly differentially expressed genes is then passed to PAGER, which offers a network-accessible REST API for performing various gene-set, network, and pathway analyses.")
+st.markdown("The list of significantly differentially expressed genes (DEG) is then passed to PAGER, which offers a network-accessible REST API for performing various gene-set, network, and pathway analyses.")
 
 st.sidebar.subheader('Set PAGER Parameters')
 sources = st.sidebar.multiselect('Available Data Sources',
@@ -105,7 +105,8 @@ sources = st.sidebar.multiselect('Available Data Sources',
 fdr = st.sidebar.slider('FDR Cutoff', 0.0, 1.0, 0.05, 0.01)
 pager_output = run_pager(genes, sources, fdr)
 
-st.subheader('View/Filter Results')
+st.subheader('Dynamically View/Filter Results')
+st.markdown('We invite you to interactively, *in real-time*, filter these PAGER results below. Also, you can set PAGER parameters in the sidebar')
 # Convert GS_SIZE column from object to integer dtype.
 # See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html.
 pager_output = pager_output.astype({'GS_SIZE': 'int32'})
@@ -120,8 +121,8 @@ filtered_output = pager_output[pager_output['GS_SIZE'].between(user_min, user_ma
 st.write(filtered_output)
 
 # See "File Download Workaround" in Gallery at http://awesome-streamlit.org/ for background reading.
-st.subheader('Download Results')
-st.markdown('The filtered PAGER results can be now be downloaded for further review and post-processing.')
+st.subheader('Download Interactive Results')
+st.markdown('The interactively end user-filtered PAGER results can be now be downloaded for further review and post-processing.')
 st.markdown('Note this is an unofficial file download workaround from the Awesome Streamlit Gallery at http://awesome-streamlit.org, implemented here to share a neat idea.')
 # See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html.
 csv = filtered_output.to_csv(index=False)
