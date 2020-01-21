@@ -84,8 +84,9 @@ clinical_data_load_state.text('Loading query results ... done!')
 st.write(clinical_data)
 
 st.header('Parse DEG Results')
-st.markdown("This is from a differential gene expression analysis performed with a custom DESeq2-based pipeline (see source code for pipeline in access-controlled *Source Code Repository* at https://gitlab.rc.uab.edu/gbm-pdx/deseq2-rnaseq) on RNAseq data located in the *Omics Data Repository* (in GBM science team's dedicated project subdirectory).")
-st.markdown("These particular results are for the JX12T pairwise comparison and read from the *Documentation Repository* location at https://uab.app.box.com/folder/63730723635, a shared Box folder where the GBM analysis team shares results, slides, and other works-in-progress.")
+st.markdown("These results are from a differential gene expression (DEG) analysis performed with a custom DESeq2-based pipeline on RNAseq data located in the *Omics Data Repository*.")
+st.markdown("See source code for pipeline in *Source Code Repository* at https://gitlab.rc.uab.edu/gbm-pdx/deseq2-rnaseq.")
+st.markdown("See *Documentation Repository* location at https://uab.app.box.com/folder/63730723635, a shared Box folder where the GBM analysis team shares results, slides, and other works-in-progress.")
 deg_results = load_deg_results()
 if st.checkbox('Show DEG results table', value=True):
 	st.write(deg_results)
