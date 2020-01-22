@@ -26,13 +26,6 @@ def load_demographic_data():
 	# Remove age field due to possible confusion created by -1 values, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_18590 for further detail and context.
 	return df.drop(columns=['Age(in years)'])
 
-# Return GBM PDX cohort demographic data as a data frame.
-def load_demographic_data_from_csv_file():
-	# Note these data are results from a UWS API query performed by Abakash for GBM cohort demographic data. See Nov 19, 2019 e-mail for further detail.
-	df = pd.read_csv('getalli2b2demographics-rdalej-27676.csv')
-	# Remove age field due to possible confusion created by -1 values, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_18590 for further detail and context.
-	return df.drop(columns=['Age(in years)'])
-
 # Return DEG results for JX12T pairwise comparison as data frame.
 @st.cache
 def load_deg_results():
@@ -72,14 +65,8 @@ st.header('Query Clinical Data')
 st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically and securely over the network via REST API call to the *Unified Web Services* (UWS) API, which returns cohort-related clinical data sets.")
 st.markdown("See https://ubritedvapp1.hs.uab.edu/UbriteServices/services.html for API specification.")
 
-st.sidebar.subheader('Set UWS API Parameters')
-use_local_csv_file = st.sidebar.checkbox('Use local CSV file.', value=True)
-
 clinical_data_load_state = st.text('Loading query results ... ')
-if use_local_csv_file:
-	clinical_data = load_demographic_data_from_csv_file()
-else:
-	clinical_data = load_demographic_data()
+clinical_data = load_demographic_data()
 clinical_data_load_state.text('Loading query results ... done!')
 st.write(clinical_data)
 
