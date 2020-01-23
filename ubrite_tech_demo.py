@@ -106,6 +106,9 @@ max_gs_size = max(gs_sizes)
 user_min, user_max = st.slider('GS_SIZE Range', max_value=max_gs_size, value=(min_gs_size, max_gs_size))
 filtered_output = pager_output[pager_output['GS_SIZE'].between(user_min, user_max)]
 st.write(filtered_output)
+# Per Jake's feedback, show a row count to make it easier to tell that results table is being dynamically updated as filtering is performed.
+row_count, _ = filtered_output.shape
+st.markdown('Row count = **{0}**'.format(row_count))
 
 # See "File Download Workaround" in Gallery at http://awesome-streamlit.org/ for background reading.
 st.subheader('Download Interactive Results')
