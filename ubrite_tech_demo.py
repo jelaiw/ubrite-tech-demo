@@ -73,7 +73,6 @@ st.write(clinical_data)
 st.header('Parse DEG Results')
 st.markdown("These results are from a differential gene expression (DEG) analysis performed with a custom DESeq2-based pipeline on RNAseq data located in the *Omics Data Repository*.")
 st.markdown("See source code for pipeline in *Source Code Repository* at https://gitlab.rc.uab.edu/gbm-pdx/deseq2-rnaseq.")
-st.markdown("See *Documentation Repository* location at https://uab.app.box.com/folder/63730723635, a shared Box folder where the GBM analysis team shares results, slides, and other works-in-progress.")
 # Somewhat kludgy section to optionally show source code for st.write() call.
 show_code = st.checkbox('Show source code')
 if show_code:
