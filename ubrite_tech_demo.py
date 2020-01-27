@@ -119,9 +119,12 @@ st.markdown('Row count = **{0}**'.format(row_count))
 # See "File Download Workaround" in Gallery at http://awesome-streamlit.org/ for background reading.
 st.subheader('Download Interactive Results')
 st.markdown('The interactively end user-filtered PAGER results can now be downloaded for further review and post-processing.')
-st.markdown('Note this is an unofficial file download workaround from the Awesome Streamlit Gallery at http://awesome-streamlit.org, implemented here to share a neat idea.')
 # See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html.
 csv = filtered_output.to_csv(index=False)
 b64 = base64.b64encode(csv.encode()).decode()
 href = '<a href="data:file/csv;base64,{0}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'.format(b64)
 st.markdown(href, unsafe_allow_html=True)
+
+st.header('References')
+with open('references.md', 'r') as ref_file:
+	st.markdown(ref_file.read())
