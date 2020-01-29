@@ -61,6 +61,9 @@ def run_pager(genes, sources, fdr):
 #	print(response.request.body)
 	return pd.DataFrame(response.json())
 
+st.header('Overview')
+st.image('overview_diagram.png', use_column_width=True)
+
 st.header('Query Clinical Data')
 st.markdown("These data are read from U-BRITE's *Clinical Data Repository* programmatically and securely over the network via REST API call to the *Unified Web Services* (UWS) API, which returns cohort-related clinical data sets.")
 st.markdown("See https://ubritedvapp1.hs.uab.edu/UbriteServices/services.html for API specification.")
