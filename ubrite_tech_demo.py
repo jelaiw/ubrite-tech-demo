@@ -63,7 +63,7 @@ def run_pager(genes, sources, fdr):
 
 # See Zenodo record at http://doi.org/10.5281/zenodo.3700076.
 st.header('Cite As')
-st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, … Jake Chen*. (2020, January 29). Technical Demo from U-BRITE 2.0 Launch Day. Zenodo. http://doi.org/10.5281/zenodo.3700076')
+st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, ... Jake Chen*. (2020, January 29). Technical Demo from U-BRITE 2.0 Launch Day. Zenodo. http://doi.org/10.5281/zenodo.3700076')
 
 st.header('Overview')
 st.image('team_ubrite_interaction_diagram.png', use_column_width=True)
