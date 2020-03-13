@@ -61,10 +61,6 @@ def run_pager(genes, sources, fdr):
 #	print(response.request.body)
 	return pd.DataFrame(response.json())
 
-# See Zenodo record at http://doi.org/10.5281/zenodo.3700076.
-st.header('Cite As')
-st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, ... Jake Chen*. (2020, January 29). Technical Demo from U-BRITE 2.0 Launch Day. Zenodo. http://doi.org/10.5281/zenodo.3700076')
-
 st.header('Overview')
 st.image('team_ubrite_interaction_diagram.png', use_column_width=True)
 
@@ -130,6 +126,10 @@ csv = filtered_output.to_csv(index=False)
 b64 = base64.b64encode(csv.encode()).decode()
 href = '<a href="data:file/csv;base64,{0}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'.format(b64)
 st.markdown(href, unsafe_allow_html=True)
+
+# See Zenodo record at http://doi.org/10.5281/zenodo.3700076.
+st.header('Please Cite As')
+st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, ... Jake Chen*. (2020, January 29). Technical Demo from U-BRITE 2.0 Launch Day. Zenodo. http://doi.org/10.5281/zenodo.3700076')
 
 st.header('References')
 with open('references.md', 'r') as ref_file:
