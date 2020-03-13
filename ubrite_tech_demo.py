@@ -9,6 +9,7 @@ st.title('U-BRITE Tech Demo')
 st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, Christian Stackhouse, Lara Ianov, Chris Willey, Jake Chen*')
 
 # Return GBM PDX cohort demographic data as a data frame.
+@st.cache
 def load_demographic_data():
 	# Set up request parameters for UWS API call, see https://ubrite.slack.com/files/UAVTLGHT7/FLDADUC72/unified_ws_client.py for example from Abakash.
 	params = {}
@@ -41,6 +42,7 @@ def load_deg_results():
 
 # Call PAGER REST API to perform hypergeometric test and return enriched PAGs associated with given list of genes as a data frame.
 # See pathFun() in PAGER R SDK at https://uab.app.box.com/file/529139337869.
+@st.cache
 def run_pager(genes, sources, fdr):
 	# Set up the call parameters as a dict.
 	params = {}
