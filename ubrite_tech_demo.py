@@ -7,6 +7,8 @@ from io import StringIO
 
 st.title('U-BRITE Tech Demo')
 st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, Christian Stackhouse, Lara Ianov, Chris Willey, Jake Chen*')
+# See markdown image link kludge at https://discuss.streamlit.io/t/is-it-possible-to-add-link/1027/3.
+st.markdown('[![DOI badge](https://zenodo.org/badge/DOI/10.5281/zenodo.3700076.svg)](http://doi.org/10.5281/zenodo.3700076)')
 
 # Return GBM PDX cohort demographic data as a data frame.
 @st.cache
@@ -132,7 +134,6 @@ st.markdown(href, unsafe_allow_html=True)
 # See Zenodo record at http://doi.org/10.5281/zenodo.3700076.
 st.header('Please Cite As')
 st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, ... Jake Chen*. (2020, January 29). Technical Demo from U-BRITE 2.0 Launch Day. Zenodo. http://doi.org/10.5281/zenodo.3700076')
-# See markdown image link kludge at https://discuss.streamlit.io/t/is-it-possible-to-add-link/1027/3.
 st.markdown('[![DOI badge](https://zenodo.org/badge/DOI/10.5281/zenodo.3700076.svg)](http://doi.org/10.5281/zenodo.3700076)')
 
 st.header('References')
