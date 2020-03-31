@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import requests
 import base64
-from io import StringIO
 
 st.title('U-BRITE Tech Demo')
 st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick Dezenzio, Matt Wyatt, Christian Stackhouse, Lara Ianov, Chris Willey, Jake Chen*')
@@ -11,23 +10,9 @@ st.markdown('*Jelai Wang, Zongliang Yue, Abakash Samal, Dale Johnson, Patrick De
 st.markdown('[![DOI badge](https://zenodo.org/badge/DOI/10.5281/zenodo.3700076.svg)](http://doi.org/10.5281/zenodo.3700076)')
 
 # Return GBM PDX cohort demographic data as a data frame.
-@st.cache
 def load_demographic_data():
-	# Set up request parameters for UWS API call, see https://ubrite.slack.com/files/UAVTLGHT7/FLDADUC72/unified_ws_client.py for example from Abakash.
-	params = {}
-	params['requestorid'] = "rdalej"
-	params['cohortid'] = "27676"
-	params['format'] = "csv"
-	response = requests.get('https://ubritedvapp1.hs.uab.edu/UbriteServices/getalli2b2demographics', headers={'eppn': 'jelaiw@uab.edu'}, params=params)
-
-	# Remove first two lines of CSV-formatted response, see https://ubrite.slack.com/archives/CJTQDGE30/p1579191182004100 for context.
-	lines = response.text.split('\n')
-	relevant_csv_text = '\n'.join(lines[2:])
-	# See https://stackoverflow.com/questions/20696479/pandas-read-csv-from-string-or-package-data.
-	df = pd.read_csv(StringIO(relevant_csv_text))
-
-	# Remove age field due to possible confusion created by -1 values, see https://gitlab.rc.uab.edu/jelaiw/infrastructure-development/issues/146#note_18590 for further detail and context.
-	return df.drop(columns=['Age(in years)'])
+	# Read locally cached data (instead of live UWS API call) for Heroku demo.
+	return pd.read_csv('demographics_data.csv')
 
 # Return DEG results for JX12T pairwise comparison as data frame.
 @st.cache

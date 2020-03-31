@@ -1,0 +1,28 @@
+Patient Id,Birth Date,Death Date,Ethnic Group Code,Sex Code,Race Code,Vital Status Code,Zip Code
+630350,**/**/1948,,Non-Hispanic/Latino,FEMALE,White,Alive,35226
+695356,**/**/1978,,Unknown,MALE,Other,Alive,35023
+1041246,**/**/1954,**/**/2011,Non-Hispanic/Latino,FEMALE,White,Deceased,36305
+1211401,**/**/1961,**/**/2015,Non-Hispanic/Latino,FEMALE,White,Deceased,35120
+1345441,**/**/1947,,Unknown,MALE,Other,Alive,35611
+1427052,**/**/1940,**/**/2011,Unknown,MALE,White,Deceased,35206
+1434840,**/**/1940,**/**/2007,Unknown,FEMALE,Other,Deceased,36701
+1632678,**/**/1935,,Unknown,MALE,Other,Alive,35121
+1753497,**/**/1942,,Unknown,FEMALE,Other,Alive,36830
+1801366,**/**/1948,,Unknown,MALE,Other,Alive,35114
+1822780,**/**/1977,,Non-Hispanic/Latino,MALE,White,Alive,35563
+1862637,**/**/1933,**/**/2011,Unknown,FEMALE,White,Deceased,36265
+1902740,**/**/1966,**/**/2015,Non-Hispanic/Latino,FEMALE,White,Deceased,35763
+1915378,**/**/1947,**/**/2012,Non-Hispanic/Latino,FEMALE,White,Deceased,35490
+1929727,**/**/1951,,Non-Hispanic/Latino,FEMALE,White,Alive,35645
+1944874,**/**/1951,,Unknown,FEMALE,White,Alive,35242
+1960405,**/**/1945,,Unknown,FEMALE,Other,Alive,36360
+2043493,**/**/1954,,Non-Hispanic/Latino,FEMALE,White,Alive,35083
+2066586,**/**/1962,**/**/2011,Non-Hispanic/Latino,MALE,White,Deceased,35904
+2087951,**/**/1939,**/**/2013,Non-Hispanic/Latino,FEMALE,White,Deceased,35062
+2092534,**/**/1961,**/**/2013,Non-Hispanic/Latino,MALE,White,Deceased,38825
+2164270,**/**/1926,,Non-Hispanic/Latino,FEMALE,White,Deceased,35661
+2176617,**/**/1946,**/**/2015,Non-Hispanic/Latino,FEMALE,White,Deceased,35971
+2188096,**/**/1933,,Non-Hispanic/Latino,MALE,White,Alive,36541
+2193751,**/**/1960,**/**/2015,Non-Hispanic/Latino,FEMALE,Black or African American,Deceased,35234
+2209117,**/**/1954,,Non-Hispanic/Latino,MALE,White,Alive,35601
+2296904,**/**/1964,**/**/2016,Non-Hispanic/Latino,MALE,White,Deceased,35209
