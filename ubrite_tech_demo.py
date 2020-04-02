@@ -102,6 +102,9 @@ max_gs_size = max(gs_sizes)
 # See https://streamlit.io/docs/api.html#streamlit.slider.
 user_min, user_max = st.slider('GS_SIZE Range', max_value=max_gs_size, value=(min_gs_size, max_gs_size))
 filtered_output = pager_output[pager_output['GS_SIZE'].between(user_min, user_max)]
+# Reset index after filtering such that rows are still sequentially numbered.
+# See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.reset_index.html.
+filtered_output.reset_index(inplace=True, drop=True)
 st.write(filtered_output)
 # Per Jake's feedback, show a row count to make it easier to tell that results table is being dynamically updated as filtering is performed.
 row_count, _ = filtered_output.shape
