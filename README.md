@@ -1,5 +1,7 @@
+[![http://doi.org/10.5281/zenodo.3700076](https://zenodo.org/badge/DOI/10.5281/zenodo.3700076.svg)](http://doi.org/10.5281/zenodo.3700076)
+
 ## Overview
-A Streamlit-based Technology Demo for U-BRITE 2.0 Launch Day.
+Streamlit-based Technology Demo for U-BRITE 2.0 Launch Day.
 
 Interact with a live demo at http://demo.ubrite.org/. 
 
